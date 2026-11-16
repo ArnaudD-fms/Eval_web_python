@@ -6,14 +6,15 @@ left to right direction
 
 skinparam classAttributeIconSize 0
 skinparam linetype polyline
-skinparam nodesep 100
-skinparam ranksep 130
+skinparam nodesep 60
+skinparam ranksep 60
 
 hide circle
 
 class User {
   - id : int
-  - username : str
+  - first_name : str
+  - last_name : str
   - email : str
 }
 
@@ -30,13 +31,13 @@ class HelpRequest {
 }
 
 ' Création d'une demande
-User "1" -down- "0..*" HelpRequest : create >
+User "1" -right- "0..*" HelpRequest : create >
 
 ' Proposition d'aide
-User "0..1" -- "0..*" HelpRequest : help >
+User "0..1" -right- "0..*" HelpRequest : help >
 
 ' Compétences possédées
-User "0..*" -right- "0..*" Skill : possessed >
+User "0..*" -- "0..*" Skill : possessed >
 
 ' Compétence recherchée
 Skill "1" -down- "0..*" HelpRequest : required <
