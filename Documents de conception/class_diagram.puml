@@ -1,0 +1,45 @@
+
+@startuml
+title Diagramme de classes - Échange de compétences
+
+left to right direction
+
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 60
+skinparam ranksep 60
+
+hide circle
+
+class User {
+  - id : int
+  - first_name : str
+  - last_name : str
+  - email : str
+}
+
+class Skill {
+  - id : int
+  - name : str
+}
+
+class HelpRequest {
+  - id : int
+  - description : str
+  - start_date : datetime
+  - end_date : datetime
+}
+
+' Création d'une demande
+User "1" -right- "0..*" HelpRequest : create >
+
+' Proposition d'aide
+User "0..1" -right- "0..*" HelpRequest : help >
+
+' Compétences possédées
+User "0..*" -- "0..*" Skill : possessed >
+
+' Compétence recherchée
+Skill "1" -down- "0..*" HelpRequest : required <
+
+@enduml

@@ -1,0 +1,41 @@
+
+@startuml
+title Proposer son aide sur un créneau
+
+autonumber "<b>0</b> - "
+
+actor "Utilisateur connecté" as U
+boundary "Interface web" as I
+control "Application" as A
+database "Base de données" as B
+
+U -> I : Consulter les demandes d'aide
+I -> A : Obtenir les demandes d'aide compatibles \navec les compétences de l'utilisateur
+A -> B : Rechercher les demandes disponibles\ncorrespondantes
+B --> A : Liste des demandes compatibles
+A --> I : Retourner les demandes
+I --> U : Afficher les demandes d'aide disponibles
+
+U -> I : Sélectionner un créneau\net proposer son aide
+I -> A : Envoyer la proposition d'aide
+
+A -> B : Vérifier et attribuer le créneau\nsi toujours disponible
+
+alt Créneau disponible
+    B --> A : Attribution effectuée
+    A --> I : Confirmation de la prise en charge
+    I --> U : Afficher le message de confirmation
+
+    note over A, B
+      Le créneau attribué ne sera plus
+      proposé aux autres utilisateurs.
+    end note
+
+else Créneau déjà attribué
+    B --> A : Attribution refusée
+    A --> I : Créneau indisponible
+    I --> U : Afficher un message d'erreur
+end
+
+@enduml
+  
