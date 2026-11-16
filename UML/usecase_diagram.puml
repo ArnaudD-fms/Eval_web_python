@@ -10,15 +10,13 @@ U --|> V
 
 rectangle "Application d'échange de compétences" {
 
-  usecase "S'authentifier" as UC0
+  usecase "S'authentifier" as UC1
 
-  usecase "Consulter la liste\ndes compétences" as UC1
+  usecase "Consulter la liste\ndes compétences" as UC2
 
-  usecase "Consulter les créneaux\nd'aide proposés\n(affichage anonyme)" as UC2
+  usecase "Consulter les créneaux\nd'aide proposés\n(affichage anonyme)" as UC3
 
-  usecase "Indiquer ses\ncompétences" as UC3
-
-  usecase "Renseigner ses\ndisponibilités" as UC4
+  usecase "Indiquer ses\ncompétences" as UC4
 
   usecase "Créer une\ndemande d'aide" as UC5
 
@@ -29,11 +27,10 @@ rectangle "Application d'échange de compétences" {
   usecase "Rendre le créneau\nindisponible pour\nd'autres propositions" as UC8
 }
 
-V --> UC0
 V --> UC1
 V --> UC2
+V --> UC3
 
-U --> UC3
 U --> UC4
 U --> UC5
 U --> UC6
