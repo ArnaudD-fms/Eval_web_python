@@ -18,6 +18,7 @@ class Skill(models.Model):
     users = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         related_name="skills",
+        blank=True,
     )
 
     def __str__(self):
