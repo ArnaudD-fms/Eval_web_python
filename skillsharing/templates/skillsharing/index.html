@@ -1,3 +1,16 @@
+{% if user.is_authenticated %}
+
+    <p>Bonjour {{ user.username }}</p>
+
+{% else %}
+
+    <a href="{% url 'skillsharing:login' %}">
+        Se connecter
+    </a>
+
+{% endif %}
+
+
 <h2>Notres Expertise...</h2>
 
 {% for skill in skills %}
