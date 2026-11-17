@@ -1,0 +1,11 @@
+<h2>Notres Expertise...</h2>
+
+{% for skill in skills %}
+    <p>{{ skill }}</p>
+{% endfor %}
+
+<h2>Les dernières demandes...</h2>
+
+{% for help_request in help_requests %}
+    <p>{{ help_request }}</p>
+{% endfor %}
