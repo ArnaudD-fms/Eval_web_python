@@ -13,5 +13,12 @@ urlpatterns = [
             next_page="skillsharing:index"
         ),
         name="login"
+    ),
+    path(
+        "logout/",
+        auth_views.LogoutView.as_view(
+            next_page="skillsharing:index"
+        ),
+        name="logout"
     )
 ]

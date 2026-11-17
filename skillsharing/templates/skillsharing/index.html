@@ -2,6 +2,11 @@
 
     <p>Bonjour {{ user.username }}</p>
 
+    <form action="{% url 'skillsharing:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Se déconnecter</button>
+    </form>
+
 {% else %}
 
     <a href="{% url 'skillsharing:login' %}">
