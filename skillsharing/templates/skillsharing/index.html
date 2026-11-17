@@ -8,4 +8,5 @@
 
 {% for help_request in help_requests %}
     <p>{{ help_request }}</p>
+    <p>Du {{ help_request.start_date|date:"d F Y H:i" }} au {{ help_request.end_date|date:"d F Y H:i" }}.</p>
 {% endfor %}

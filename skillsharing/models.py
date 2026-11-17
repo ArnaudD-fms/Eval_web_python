@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 
 
-MAX_LENGTH = 20
+MAX_LENGTH = 400
 
 
 def text_excerpt(text, max_length):
