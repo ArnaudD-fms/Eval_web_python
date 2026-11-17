@@ -24,3 +24,7 @@ class HelpRequestCreateView(CreateView):
     form_class = HelpRequestForm
     template_name = "skillsharing/add_help_request.html"
     success_url = reverse_lazy("skillsharing:index")
+
+    def form_valid(self, form):
+        form.instance.requester = self.request.user
+        return super().form_valid(form)
