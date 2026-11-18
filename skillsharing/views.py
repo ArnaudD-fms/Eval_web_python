@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import CreateView
@@ -19,7 +20,7 @@ class IndexView(generic.TemplateView):
         return context
 
 
-class HelpRequestCreateView(CreateView):
+class HelpRequestCreateView(LoginRequiredMixin, CreateView):
     model = HelpRequest
     form_class = HelpRequestForm
     template_name = "skillsharing/add_help_request.html"
