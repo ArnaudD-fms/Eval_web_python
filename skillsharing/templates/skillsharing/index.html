@@ -5,15 +5,13 @@
 {% block header %}
   {% if user.is_authenticated %}
 
-        <p>Bonjour {{ user.username }}</p>
-        <a href="{% url 'skillsharing:add_help_request' %}">Demander de l'aide</a>
-        <a href="{% url 'skillsharing:help_requests' %}">Consulter les demandes d'aide</a>
-
-
-        <form action="{% url 'skillsharing:logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Se déconnecter</button>
-        </form>
+        <div class="header-user">
+            <span class="user-name">Bonjour {{ user.username }}</span>
+            <form action="{% url 'skillsharing:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Se déconnecter</button>
+            </form>
+        </div>
 
     {% else %}
 
