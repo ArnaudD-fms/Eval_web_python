@@ -2,26 +2,6 @@
 
 {% load static %}
 
-{% block header %}
-  {% if user.is_authenticated %}
-
-        <div class="header-user">
-            <span class="user-name">Bonjour {{ user.username }}</span>
-            <form action="{% url 'skillsharing:logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="logout-btn">Se déconnecter</button>
-            </form>
-        </div>
-
-    {% else %}
-
-        <a href="{% url 'skillsharing:login' %}">
-            Se connecter
-        </a>
-
-    {% endif %}
-{% endblock %}
-
 {% block main %}
     <h2>Notre Expertise...</h2>
 

@@ -10,25 +10,40 @@
 </head>
 <body>
 
-    <header>
-        <div class="site-header">
-            <h1 class="site-title">Skill Sharing</h1>
-            {% block header %}
-            {% endblock %}
-        </div>
-        <div class="navbar">
-            <a href="{% url 'skillsharing:index' %}">Accueil</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'skillsharing:add_help_request' %}">Demander de l'aide</a>
-                <a href="{% url 'skillsharing:help_requests' %}">Consulter les demandes d'aide</a>
-            {% endif %}
-        </div>
-    </header>
+<header>
+    <div class="site-header">
+        <h1 class="site-title">Skill Sharing</h1>
+        {% if user.is_authenticated %}
 
-    <main>
-        {% block main %}
-        {% endblock %}
-    </main>
+        <div class="header-user">
+            <span class="user-name">Bonjour {{ user.username }}</span>
+            <form action="{% url 'skillsharing:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Se déconnecter</button>
+            </form>
+        </div>
+
+        {% else %}
+
+        <a href="{% url 'skillsharing:login' %}">
+            Se connecter
+        </a>
+
+        {% endif %}
+    </div>
+    <div class="navbar">
+        <a href="{% url 'skillsharing:index' %}">Accueil</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'skillsharing:add_help_request' %}">Demander de l'aide</a>
+        <a href="{% url 'skillsharing:help_requests' %}">Consulter les demandes d'aide</a>
+        {% endif %}
+    </div>
+</header>
+
+<main>
+    {% block main %}
+    {% endblock %}
+</main>
 
 </body>
 </html>

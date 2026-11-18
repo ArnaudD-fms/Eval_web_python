@@ -1,11 +1,19 @@
-<h1>Nouvelle demande d'aide</h1>
+{% extends "base.html" %}
 
-<form method="post">
-    {% csrf_token %}
+{% load static %}
 
-    {{ form.as_p }}
+{% block main %}
+    <div class="form-container">
+        <h1>Nouvelle demande d'aide</h1>
 
-    <button type="submit">
-        Ajouter la demande
-    </button>
-</form>
+        <form method="post" class="help-request-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="submit-btn">
+                Ajouter la demande
+            </button>
+        </form>
+    </div>
+{% endblock %}

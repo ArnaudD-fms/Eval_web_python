@@ -1,15 +1,5 @@
 {% extends "base.html" %}
 
-{% block header %}
-        <div class="header-user">
-            <span class="user-name">Bonjour {{ user.username }}</span>
-            <form action="{% url 'skillsharing:logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="logout-btn">Se déconnecter</button>
-            </form>
-        </div>
-{% endblock %}
-
 {% block main %}
 
     <h2>Demandes sur lesquelles vous pourriez intervenir</h2>
