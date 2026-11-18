@@ -2,14 +2,15 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from . import views
-from .views import HelpRequestCreateView
+
 
 app_name = 'skillsharing'
 urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
+    path("help_requests/", views.HelpRequestListView.as_view(), name="help_requests"),
     path(
         "help_request/add/",
-        HelpRequestCreateView.as_view(),
+        views.HelpRequestCreateView.as_view(),
         name="add_help_request",
     ),
     path(

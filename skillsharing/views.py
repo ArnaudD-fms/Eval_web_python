@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from skillsharing.forms import HelpRequestForm
 from skillsharing.models import Skill, HelpRequest
@@ -18,6 +18,15 @@ class IndexView(generic.TemplateView):
         context["help_requests"] = HelpRequest.objects.filter(helper__isnull=False)
 
         return context
+
+
+class HelpRequestListView(LoginRequiredMixin, ListView):
+    model = HelpRequest
+    template_name = 'skillsharing/help_requests.html'
+    context_object_name = 'help_requests'
+
+    def get_queryset(self):
+        return HelpRequest.objects.filter(skill__users=self.request.user)
 
 
 class HelpRequestCreateView(LoginRequiredMixin, CreateView):

@@ -1,7 +1,9 @@
 {% if user.is_authenticated %}
 
     <p>Bonjour {{ user.username }}</p>
-    <a href="{% url 'skillsharing:add_help_request' %}">Add a question</a>
+    <a href="{% url 'skillsharing:add_help_request' %}">Demander de l'aide</a>
+    <a href="{% url 'skillsharing:help_requests' %}">Consulter les demandes d'aide</a>
+
 
     <form action="{% url 'skillsharing:logout' %}" method="post">
         {% csrf_token %}
