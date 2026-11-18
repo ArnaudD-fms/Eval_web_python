@@ -1,6 +1,22 @@
 <h2>Demandes sur lesquelles vous pourriez intervenir</h2>
 
+{% if messages %}
+    {% for message in messages %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
 {% for help_request in help_requests %}
     <p>{{ help_request }}</p>
     <p>Du {{ help_request.start_date|date:"d F Y H:i" }} au {{ help_request.end_date|date:"d F Y H:i" }}.</p>
+    <form method="post"
+          action="{% url 'skillsharing:accept_help_request' help_request.pk %}">
+        {% csrf_token %}
+
+        <button type="submit">
+            Prendre en charge
+        </button>
+    </form>
 {% endfor %}

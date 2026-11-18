@@ -8,6 +8,7 @@ app_name = 'skillsharing'
 urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
     path("help_requests/", views.HelpRequestListView.as_view(), name="help_requests"),
+    path("help_request/<int:help_request_id>/accept/", views.accept_help_request, name="accept_help_request"),
     path(
         "help_request/add/",
         views.HelpRequestCreateView.as_view(),
