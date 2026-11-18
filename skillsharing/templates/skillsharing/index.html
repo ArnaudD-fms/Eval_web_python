@@ -1,33 +1,38 @@
-{% if user.is_authenticated %}
+{% extends "base.html" %}
 
-    <p>Bonjour {{ user.username }}</p>
-    <a href="{% url 'skillsharing:add_help_request' %}">Demander de l'aide</a>
-    <a href="{% url 'skillsharing:help_requests' %}">Consulter les demandes d'aide</a>
+{% block header %}
+  {% if user.is_authenticated %}
 
-
-    <form action="{% url 'skillsharing:logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Se déconnecter</button>
-    </form>
-
-{% else %}
-
-    <a href="{% url 'skillsharing:login' %}">
-        Se connecter
-    </a>
-
-{% endif %}
+        <p>Bonjour {{ user.username }}</p>
+        <a href="{% url 'skillsharing:add_help_request' %}">Demander de l'aide</a>
+        <a href="{% url 'skillsharing:help_requests' %}">Consulter les demandes d'aide</a>
 
 
-<h2>Notres Expertise...</h2>
+        <form action="{% url 'skillsharing:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Se déconnecter</button>
+        </form>
 
-{% for skill in skills %}
-    <p>{{ skill }}</p>
-{% endfor %}
+    {% else %}
 
-<h2>Les dernières demandes...</h2>
+        <a href="{% url 'skillsharing:login' %}">
+            Se connecter
+        </a>
 
-{% for help_request in help_requests %}
-    <p>{{ help_request }}</p>
-    <p>Du {{ help_request.start_date|date:"d F Y H:i" }} au {{ help_request.end_date|date:"d F Y H:i" }}.</p>
-{% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <h2>Notres Expertise...</h2>
+
+    {% for skill in skills %}
+        <p>{{ skill }}</p>
+    {% endfor %}
+
+    <h2>Les dernières demandes...</h2>
+
+    {% for help_request in help_requests %}
+        <p>{{ help_request }}</p>
+        <p>Du {{ help_request.start_date|date:"d F Y H:i" }} au {{ help_request.end_date|date:"d F Y H:i" }}.</p>
+    {% endfor %}
+{% endblock %}
