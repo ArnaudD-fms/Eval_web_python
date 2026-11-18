@@ -25,11 +25,13 @@
 {% endblock %}
 
 {% block main %}
-    <h2>Notres Expertise...</h2>
+    <h2>Notre Expertise...</h2>
 
+    <ul class="skills-list">
     {% for skill in skills %}
-        <p>{{ skill }}</p>
+        <li class="skill-tag">{{ skill }}</li>
     {% endfor %}
+    </ul>
 
     <h2>Les dernières demandes...</h2>
 
