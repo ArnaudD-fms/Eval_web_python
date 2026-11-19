@@ -12,19 +12,25 @@
         {% endfor %}
     {% endif %}
 
-    {% for help_request in help_requests %}
-        <p>Demande de : {{ help_request.requester.username }}</p>
-        <p>{{ help_request }}</p>
-        <p>Disponible Du {{ help_request.start_date|date:"d F Y H:i" }} au {{ help_request.end_date|date:"d F Y H:i" }}.</p>
-        <p>Contact : {{ help_request.requester.email }}</p>
-        <form method="post"
-              action="{% url 'skillsharing:accept_help_request' help_request.pk %}">
-            {% csrf_token %}
+    <div class="help-requests-list">
+        {% for help_request in help_requests %}
+            <article class="help-request-card">
+                <p class="help-request-description">{{ help_request }}</p>
+                <p class="help-request-date">Disponible Du {{ help_request.start_date|date:"d F Y H:i" }} au {{ help_request.end_date|date:"d F Y H:i" }}.</p>
+                <div class="help-request-info">
+                    <p class="help-request-author">{{ help_request.requester.username }}</p>
+                    <p class="help-request-contact">{{ help_request.requester.email }}</p>
+                </div>
+                <form method="post"
+                      action="{% url 'skillsharing:accept_help_request' help_request.pk %}">
+                    {% csrf_token %}
 
-            <button type="submit">
-                Prendre en charge
-            </button>
-        </form>
-    {% endfor %}
+                    <button type="submit">
+                        Prendre en charge
+                    </button>
+                </form>
+            </article>
+        {% endfor %}
+    </div>
 
 {% endblock %}

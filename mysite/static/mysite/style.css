@@ -1,3 +1,25 @@
+/* Reset des marges par défaut et ajout de la police pour l'ensemble du site */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Application de la police du site pour l'ensemble des élements de formulaire */
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+}
+
+main {
+    padding: 20px 40px;
+}
+
+/* header */
 .site-header {
     display: flex;
     justify-content: space-between;
@@ -8,18 +30,21 @@
     border-bottom: 1px solid #e5e7eb;
 }
 
+/* Contient le nom d'utilisateur et le bouton de déconnexion */
 .header-user {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
+/* Nom de l'utilisateur connecté */
 .user-name {
     font-size: 16px;
     font-weight: 500;
     color: #374151;
 }
 
+/* Bouton de déconnexion */
 .logout-btn {
     padding: 10px 16px;
     background-color: #2563eb;
@@ -36,6 +61,7 @@
     background-color: #1d4ed8;
 }
 
+/* Logo du site */
 .site-title {
     margin: 0;
     font-size: 28px;
@@ -43,15 +69,17 @@
     color: #111827;
 }
 
+/* Contient les tags de compétences */
 .skills-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin-bottom: 30px;
 }
 
+/* Tag pour une compétence */
 .skill-tag {
     display: inline-block;
     padding: 6px 14px;
@@ -59,17 +87,19 @@
     border-radius: 20px;
     background-color: #f3f4f6;
     color: #374151;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
 }
 
+/* Contient le formulaire */
 .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* formulaire de demande d'aide */
 .help-request-form {
     width: 100%;
     max-width: 600px;
@@ -99,7 +129,6 @@
     border-radius: 8px;
     color: #111827;
     font-size: 14px;
-    font-family: inherit;
 }
 
 .help-request-form input:focus,
@@ -127,5 +156,109 @@
 }
 
 .submit-btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* Barre de navigation */
+.navbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding: 12px 40px;
+    background-color: #f3f4f6;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Lien vers les pages du site */
+.navbar a {
+    padding: 10px 16px;
+    color: #374151;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.2s ease,
+                color 0.2s ease;
+}
+
+.navbar a:hover {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+/* Conteneur des demandes */
+.help-requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Carte d'une demande */
+.help-request-card {
+    padding: 20px 24px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    border-left: 4px solid #2563eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Description de la demande */
+.help-request-description {
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #111827;
+}
+
+/* Dates de la demande */
+.help-request-date {
+    margin: 0;
+    font-size: 14px;
+    color: #374151;
+}
+
+/* Informations du demandeur */
+.help-request-info {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Nom du demandeur */
+.help-request-author {
+    margin: 0 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Coordonnées de contact */
+.help-request-contact {
+    margin: 0;
+    font-size: 14px;
+    color: #2563eb;
+}
+
+/* Bouton de prise en charge de la demande */
+.help-request-card button {
+    margin-top: 10px;
+    padding: 10px 16px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.help-request-card button:hover {
     background-color: #1d4ed8;
 }

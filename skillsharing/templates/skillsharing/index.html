@@ -13,8 +13,18 @@
 
     <h2>Les dernières demandes...</h2>
 
-    {% for help_request in help_requests %}
-        <p>{{ help_request }}</p>
-        <p>Du {{ help_request.start_date|date:"d F Y H:i" }} au {{ help_request.end_date|date:"d F Y H:i" }}.</p>
-    {% endfor %}
+    <div class="help-requests-list">
+        {% for help_request in help_requests %}
+            <article class="help-request-card">
+                <p class="help-request-description">
+                    {{ help_request }}
+                </p>
+
+                <p class="help-request-date">
+                    Disponible du {{ help_request.start_date|date:"d F Y H:i" }}
+                    au {{ help_request.end_date|date:"d F Y H:i" }}.
+                </p>
+            </article>
+        {% endfor %}
+    </div>
 {% endblock %}

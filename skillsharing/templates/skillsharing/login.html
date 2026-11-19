@@ -1,13 +1,21 @@
-<h1>Connexion</h1>
+{% extends "base.html" %}
 
-<form method="post">
-    {% csrf_token %}
+{% load static %}
 
-    {{ form.as_p }}
+{% block main %}
+    <div class="form-container">
+        <h1>Connexion</h1>
 
-    <button type="submit">Se connecter</button>
-</form>
+        <form method="post" class="help-request-form">
+            {% csrf_token %}
 
-<a href="{% url 'skillsharing:index' %}">
-    Continuer en tant que visiteur
-</a>
+            {{ form.as_p }}
+
+            <button type="submit" class="submit-btn">Se connecter</button>
+        </form>
+
+        <a href="{% url 'skillsharing:index' %}">
+            Continuer en tant que visiteur
+        </a>
+    </div>
+{% endblock %}

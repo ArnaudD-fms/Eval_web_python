@@ -72,3 +72,4 @@ def accept_help_request(request, help_request_id):
         )
 
     return HttpResponseRedirect(reverse_lazy("skillsharing:help_requests"))
+
